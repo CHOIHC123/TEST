@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.human.dao.IBootoDao">
+
+		<!--  <sql id='search'>
+		<if test="searchType!=null">
+			<if test="searchType == 't'.toString()"> and title like '%'|| #{keyword}||'%' </if>
+			<if test="searchType == 'c'.toString()"> and content like '%'|| #{keyword}||'%' </if>
+			<if test="searchType == 'w'.toString()"> and writer like '%'|| #{keyword}||'%' </if>
+			<if test="searchType == 'tc'.toString()"> and ( title like '%'|| #{keyword}||'%' OR content like
+				'%'|| #{keyword}||'%') </if>
+			<if test="searchType == 'cw'.toString()"> and ( content like '%'|| #{keyword}||'%' OR writer like
+				'%'|| #{keyword}||'%') </if>
+			<if test="searchType == 'tcw'.toString()"> and ( title like '%'|| #{keyword}||'%' OR content like
+				'%'|| #{keyword}||'%' OR writer like '%'|| #{keyword}||'%') </if>
+		</if>
+	</sql>
+
+		<select id="listSearch" resultType="com.human.dto.BootoDto">
+	<![CDATA[select bno, title, content, writer, viewcnt, regdate from
+	(select /*+INDEX_DESC(tbl_board,pk_board)*/ 
+	rownum rn,bno,title,content,writer,viewcnt,regdate
+	from tbl_board where 1=1  ]]>
+			<include refid="search" />
+	<![CDATA[ and rownum <= #{page} * #{perPageNum} and bno > 0 ) 
+	where rn > (#{page} -1) * #{perPageNum}]]>
+		</select>
+	
+
+
+
+	<select id="listSearchCount" resultType="int">
+<![CDATA[ select count(bno) from tbl_board where 1=1 ]]>
+		<include refid="search" />
+<![CDATA[ and bno > 0 ]]>
+	</select> -->
+ 	<insert id="insert">
+		insert into Product(userID,productCnt,productNum,productName,productPrice,
+		productImage,productKind,productSize,productColor)
+		values (#{userId},#{productCnt},#{productNum},#{productName},#{productPrice},#{productImage},#{productKind},
+		#{productSize},#{productColor})
+	</insert> 
+	
+	<delete id="delete">
+		delete Product where productNum=#{productNum}
+	</delete>
+	
+<!-- 	<delete id="deleteAll">
+		delete from Wishlist where productCnt=#{productCnt}
+	</delete>  -->
+	
+	<select id="selectAll" resultType="BootoDto">
+		SELECT W.WISHLISTNUM
+		      ,W.productcolor  -- 색상
+		      ,W.PRODUCTCNT    -- 주문개수
+		      ,P.PRODUCTNAME
+		      ,P.PRODUCTPRICE
+		      ,P.PRODUCTIMAGE
+		      ,P.PRODUCTSIZE
+		  FROM Wishlist W, Product P
+		 WHERE W.PRODUCTNUM = P.PRODUCTNUM
+	</select>
+	
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
