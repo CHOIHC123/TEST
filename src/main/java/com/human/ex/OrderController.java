@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.human.dto.OrderDto2;
 import com.human.dto.OrderDto;
 import com.human.dao.IOrderDao;
+import com.human.service.BootoService;
 import com.human.service.IOrderService;
 import com.human.service.OrderServiceImpl;
 @RequestMapping("/order/*")
@@ -36,7 +37,8 @@ public class OrderController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	
-	
+	@Autowired
+	private BootoService bservice;
 
 	
 	/*

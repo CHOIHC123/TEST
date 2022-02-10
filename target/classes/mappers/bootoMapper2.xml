@@ -63,7 +63,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM Wishlist W, Product P 
 		 WHERE W.PRODUCTNUM = P.PRODUCTNUM AND W.userID = 'user1'
 	</select>
-
+	<select id="selectAll" resultType="BootoDto">
+		select
+			
+	</select>
 
 </mapper>
 

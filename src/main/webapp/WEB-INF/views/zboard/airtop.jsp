@@ -90,13 +90,13 @@
                     <div class="check"><input type="checkbox" name="buy" value="${dto.wishlistNum}" checked="checked" onclick="javascript:basket.checkItem();">&nbsp;</div>
                     <div class="img">
                     	<c:if test="${dto.productSize eq 'S'}">
-						  	<img src="/ex/resources/img/theNew_L_B.PNG" width="120">
+						  	<img src="/ex/resources/img/${dto.productImage}" width="120">
 						</c:if>
 						<c:if test="${dto.productSize eq 'M'}">
-						  	<img src="/ex/resources/img/kf94_EX_W_slim.PNG" width="120">
+						  	<img src="/ex/resources/img/${dto.productImage}" width="120">
 						</c:if>
 						<c:if test="${dto.productSize eq 'L'}">
-						  	<img src="/ex/resources/img/freeC_M.PNG" width="120">
+						  	<img src="/ex/resources/img/${dto.productImage}" width="120">
 						</c:if>
                     </div>
                     <div class="pname">
@@ -128,13 +128,13 @@
 		        </div>
 		
 	
-        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: 4개</div>
+        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: "${dto.productCnt}"개</div>
         <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: 100,000원</div>
 
         <div id="goorder" class="">
             <div class="clear"></div>
             <div class="buttongroup center-align cmd">
-                <a href="/ex/resources/orxder/order">선택한 상품 주문</a>
+                <a href="/ex/order/order">선택한 상품 주문</a>
             </div>
         </div>
     </form>
@@ -157,7 +157,7 @@
                <div class="footer_c" , class="footer_d">
                    <ul>
                        <li>
-                       <a href="#"><img src="/ex/resources/img/footerPNG"></a>
+                       <a href="#"><img src="/ex/img/footer.PNG"></a>
                        </li>
                    </ul>
                </div>

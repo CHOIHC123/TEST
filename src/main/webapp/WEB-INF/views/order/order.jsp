@@ -188,7 +188,7 @@
 						<c:set var="sum3" value="${sum2+2500 }"></c:set>
 					<tr>
 						<td class="productImage" style="width: 100px;" id="padding30">
-	        				<img src=/ex/resources/img/"${orderdto.productImage }"  style="width: 90px; height:90px;">
+	        				<img src="/ex/resources/img/${orderdto.productImage}"  style="width: 90px; height:90px;">
 	        			</td>
 						<td id="orderProduct">
 							<p class="font_bold">${orderdto.productName }</p><input type="hidden" name="productName" value="${orderdto.productName }"><br>
